@@ -8,12 +8,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "chai": "^4.2.0",
     "mocha": "^8.2.1",
     "mongoose": "^5.10.16",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.14",
     "@types/mocha": "^8.0.4",
     "@types/mongoose": "^5.10.1",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
@@ -25,9 +27,11 @@
   },
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
+    "test": "mocha -r ts-node/register __tests__/**/*.test.ts",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext js",
     "type-check": "tsc --pretty --noEmit",
-    "build": "tsc"
+    "clean": "rm -rf dist",
+    "build": "yarn clean && tsc"
   }
 }
