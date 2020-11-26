@@ -1,0 +1,10 @@
+{
+  "name": "@kettei-sproutty/mongo-learning-00",
+  "version": "0.0.1",
+  "description": "mongo learning - ref: https://www.udemy.com/course/the-complete-developers-guide-to-mongodb",
+  "main": "src/index.ts",
+  "repository": "https://github.com/kettei-sproutty/mongo-learning-00.git",
+  "author": "alessio marchi <ketteisproutty@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
