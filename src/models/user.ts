@@ -3,6 +3,7 @@ import { IUser, IUserModel } from '@typings/user'
 
 const UserSchema = new mongoose.Schema<IUser>({
   name: String,
+  postCount: Number,
 })
 
 const modelName = 'User'

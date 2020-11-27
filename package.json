@@ -22,6 +22,7 @@
     "@typescript-eslint/parser": "^4.8.2",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
+    "nodemon": "^2.0.6",
     "prettier": "^2.2.0",
     "ts-mocha": "^8.0.0",
     "tsconfig-paths": "^3.9.0",
@@ -30,6 +31,7 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "test": "ts-mocha -p tsconfig.json __tests__/**/* --paths",
+    "test:watch": "nodemon --exec ts-mocha -p tsconfig.json __tests__/**/* --paths",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext js",
     "type-check": "tsc --pretty --noEmit",
