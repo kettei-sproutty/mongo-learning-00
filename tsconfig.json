@@ -2,9 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": ".",
-    "baseUrl": ".",
+    "outDir": "dist",
+    "rootDir": "./",
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -21,16 +20,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["node_modules/@types", "./src/typings"],
+    "typeRoots": ["node_modules/@types", "src/typings"],
     "declaration": true,
+    "baseUrl": "./",
     "paths": {
-      "@": ["./src/"],
-      "@/*": ["./src/*"],
-      "@models": ["./src/models/"],
       "@models/*": ["./src/models/*"],
-      "@typings/*": ["./src/typings/*"],
-      "@tests": ["./__tests__/"],
-      "@tests/*": ["./__tests__/*"]
+      "@typings/*": ["./src/typings/*"]
     }
   },
   "include": ["src/**/*", "__tests__/**/*"],

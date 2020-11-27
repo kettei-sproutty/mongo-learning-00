@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema<IUser>({
   name: String,
 })
 
-const modelName = 'user'
+const modelName = 'User'
 
 const UserModel = mongoose.model<IUserModel>(modelName, UserSchema)
 

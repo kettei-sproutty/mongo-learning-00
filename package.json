@@ -23,11 +23,13 @@
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "prettier": "^2.2.0",
+    "ts-mocha": "^8.0.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.1.2"
   },
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
-    "test": "mocha -r ts-node/register __tests__/**/*.test.ts",
+    "test": "ts-mocha -p tsconfig.json __tests__/**/* --paths",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext js",
     "type-check": "tsc --pretty --noEmit",
