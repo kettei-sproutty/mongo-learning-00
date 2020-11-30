@@ -14,14 +14,14 @@ before(() => {
 
 beforeEach(done => {
   const collections = Object.keys(mongoose.connection.collections)
-  collections.map(collection => {
-    if (!collection) return
-    mongoose.connection.collections[collection]
-      ?.drop()
-      .then(() => null)
-      .catch(() => null)
-    done()
-  })
+  const drop = () =>
+    collections.map(collection => {
+      if (!collection) return
+      mongoose.connection.collections[collection]?.drop()
+    })
+  Promise.all([drop()])
+    .then(() => done())
+    .catch(done)
 })
 
 after(done => {

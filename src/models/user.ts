@@ -12,6 +12,7 @@ const UserSchema = new mongoose.Schema<IUser>({
   },
   likes: { type: Number, default: 0 },
   posts: { type: [PostSchema], default: [] },
+  blogPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BlogPost' }],
 })
 
 UserSchema.virtual('postCount').get(function (this: IUser) {
