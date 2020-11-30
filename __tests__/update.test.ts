@@ -24,8 +24,19 @@ describe('Updating record', () => {
       })
   })
 
+  /** @deprecated */
+  // it('a model class can uodate', () => {
+  // UserModel.update({ name: 'Joe' }, { name: 'Alex' })
+  //   .then(() => UserModel.find({ name: 'Alex' }))
+  //   .then(users => {
+  //     expect(users).to.have.lengthOf(1)
+  //     done()
+  //   })
+  //   .catch(done)
+  // })
+
   it('a model class can uodate', done => {
-    UserModel.update({ name: 'Joe' }, { name: 'Alex' })
+    UserModel.updateOne({ name: 'Joe' }, { name: 'Alex' })
       .then(() => UserModel.find({ name: 'Alex' }))
       .then(users => {
         expect(users).to.have.lengthOf(1)
@@ -54,12 +65,24 @@ describe('Updating record', () => {
       .catch(done)
   })
 
-  it('A user can have their postcount increment by 1', done => {
-    UserModel.findOneAndUpdate({ name: 'Joe' }, { $inc: { postCount: 1 } })
+  /** @deprecated - Since postCount is now a virtual type */
+  // it('A user can have their postcount increment by 1', done => {
+  //   UserModel.findOneAndUpdate({ name: 'Joe' }, { $inc: { postCount: 1 } })
+  //     .then(() => UserModel.findOne({ name: 'Joe' }))
+  //     .then(user => {
+  //       expect(user).to.exist
+  //       expect(user!.postCount).to.be.equals(1)
+  //       done()
+  //     })
+  //     .catch(done)
+  // })
+
+  it('A user can have their likes increment by 1', done => {
+    UserModel.findOneAndUpdate({ name: 'Joe' }, { $inc: { likes: 1 } })
       .then(() => UserModel.findOne({ name: 'Joe' }))
       .then(user => {
         expect(user).to.exist
-        expect(user!.postCount).to.be.equals(1)
+        expect(user!.likes).to.be.equals(1)
         done()
       })
       .catch(done)

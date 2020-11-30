@@ -15,7 +15,12 @@ before(() => {
 beforeEach(done => {
   const collections = Object.keys(mongoose.connection.collections)
   collections.map(collection => {
-    mongoose.connection.collections[collection]!.drop(done)
+    if (!collection) return
+    mongoose.connection.collections[collection]
+      ?.drop()
+      .then(() => null)
+      .catch(() => null)
+    done()
   })
 })
 

@@ -24,8 +24,15 @@ describe('Deleting a user', () => {
       .catch(done)
   })
 
+  /**@deprecated */
+  // it('class method remove', done => {
+  //   UserModel.remove({ name: 'Joe' })
+  //     .then(() => done())
+  //     .catch(done)
+  // })
+
   it('class method remove', done => {
-    UserModel.remove({ name: 'Joe' })
+    UserModel.deleteOne({ name: 'Joe' })
       .then(() => done())
       .catch(done)
   })
