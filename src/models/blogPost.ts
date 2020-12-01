@@ -2,7 +2,7 @@ import { IBlogPost, IBlogPostModel } from '@typings/blogPost'
 import mongoose, { Schema } from 'mongoose'
 
 const BlogPostSchema = new Schema<IBlogPost>({
-  title: { type: String, required: [true, 'Title is required'] },
+  title: { type: String, requried: true },
   content: { type: String, required: true },
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 })

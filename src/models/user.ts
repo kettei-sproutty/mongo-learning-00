@@ -1,6 +1,7 @@
-import mongoose from 'mongoose'
+import mongoose, { HookNextFunction } from 'mongoose'
 import { IUser, IUserModel } from '@typings/user'
 import PostSchema from './post'
+import BlogPostModel from '@models/blogPost'
 
 const nameValidator = (name: string): boolean => name.length >= 3
 
@@ -15,8 +16,14 @@ const UserSchema = new mongoose.Schema<IUser>({
   blogPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BlogPost' }],
 })
 
-UserSchema.virtual('postCount').get(function (this: IUser) {
+UserSchema.virtual('postCount').get(function (this: IUserModel) {
   return this.posts?.length || 0
+})
+
+UserSchema.pre('remove', function (this: IUserModel, next: HookNextFunction) {
+  BlogPostModel.deleteMany({ _id: { $in: this.blogPosts } })
+    .then(() => next())
+    .catch(next)
 })
 
 const modelName = 'User'

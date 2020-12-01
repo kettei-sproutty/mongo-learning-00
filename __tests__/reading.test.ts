@@ -4,11 +4,17 @@ import { expect } from 'chai'
 
 describe('reading users out of the database', () => {
   let joe: IUserModel
+  let maria: IUserModel
+  let alex: IUserModel
+  let zac: IUserModel
 
   beforeEach(done => {
     joe = new UserModel({ name: 'Joe' })
-    joe
-      .save()
+    maria = new UserModel({ name: 'Maria' })
+    alex = new UserModel({ name: 'Alex' })
+    zac = new UserModel({ name: 'Zac' })
+
+    Promise.all([joe.save(), zac.save(), maria.save(), alex.save()])
       .then(() => done())
       .catch(done)
   })
@@ -29,6 +35,20 @@ describe('reading users out of the database', () => {
       .then(user => {
         expect(user).to.exist
         expect(user!.name).to.be.equals('Joe')
+        done()
+      })
+      .catch(done)
+  })
+
+  it('can skip and limit the result set', done => {
+    UserModel.find({})
+      .sort({ name: 1 }) //asc (-1 for desc)
+      .skip(1)
+      .limit(2)
+      .then(users => {
+        expect(users).to.have.lengthOf(2)
+        expect(users[0]?.name).to.be.eq('Joe')
+        expect(users[1]?.name).to.be.eq('Maria')
         done()
       })
       .catch(done)

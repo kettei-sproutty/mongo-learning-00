@@ -10,4 +10,4 @@ const modelName = 'Comment'
 
 const CommentModel = mongoose.model<ICommentModel>(modelName, CommentSchema)
 
-export default (mongoose.models.BlogPost as typeof CommentModel) || CommentModel
+export default (mongoose.models.Comment as typeof CommentModel) || CommentModel
